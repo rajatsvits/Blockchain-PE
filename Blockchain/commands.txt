@@ -1,0 +1,32 @@
+cd /home/shyam8/HyperledgerComposer/fabric-dev-servers/
+
+sudo rm -rf ~/.composer
+
+mkdir ~/.composer
+
+./startFabric.sh
+
+./createPeerAdminCard.sh
+
+cd /home/shyam8/Desktop/untitled
+
+composer archive create -t dir -n .
+
+composer runtime install --card PeerAdmin@hlfv1 --businessNetworkName lockerney
+
+composer network start --card PeerAdmin@hlfv1 --networkAdmin admin --networkAdminEnrollSecret adminpw --archiveFile lockerney@0.0.1.bna --file networkadmin.card
+
+composer card import --file networkadmin.card
+
+composer network ping --card admin@lockerney
+
+composer-rest-server
+
+
+
+
+//  Correct UserServicePair , change assetId
+{"$class":"org.lockerney.main.UserServicePair","assetId":"123","userServiceId":"12345678","userId":"1234","serviceId":"5678","userAccessDigiSign":"131414","serviceAccess":{"$class":"org.lockerney.main.ServiceAccess","name":"true","dateOfBirth":"true","socialSecurityNo":"true","memberIdNo":"true","emailAddress":"false","mailingAddress":"false","telephoneNo":"false","bankAccNo":"false","clinicalInfo":"false","claimsInfo":"false"}}
+
+{"$class": "org.lockerney.main.grantAccess","userServicePair": "resource:org.lockerney.main.UserServicePair#123" ,"detail": "details","transactionId": "","timestamp": "2018-04-11T17:30:32.132Z"}
+

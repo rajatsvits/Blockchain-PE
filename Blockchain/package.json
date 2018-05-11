@@ -1,0 +1,22 @@
+{
+  "name": "lockerney",
+  "version": "0.0.1",
+  "description": "Prevention of misuse of online credentials",
+  "scripts": {
+    "test": "mocha --recursive"
+  },
+  "author": "Rajat Mahajan",
+  "email": "rajatmahajansvits@gmail.com",
+  "license": "MIT",
+  "devDependencies": {
+    "composer-admin": "latest",
+    "composer-client": "latest",
+    "composer-common": "latest",
+    "composer-connector-embedded": "latest",
+    "chai": "latest",
+    "eslint": "latest",
+    "istanbul": "latest",
+    "mkdirp": "latest",
+    "mocha": "latest"
+  }
+}

@@ -1,0 +1,129 @@
+/**
+  * A business network for registration of User & Service, verification of Identities and
+  * Role-based access control for permissioned data.
+  */
+
+namespace org.lockerney.main
+
+enum TransferStatus {
+  o RETAINED
+  o TRANSFERED
+}
+
+concept Address {
+  o String addressLine1
+  o String addressLine2
+  o String city
+  o String state
+  o String country
+  o String zipcode
+} 
+
+/**
+ * User participant
+ */
+participant User identified by userId {
+  o String userId
+}
+
+/**
+ * Service participant
+ */
+participant Service identified by serviceId {
+  o String serviceId
+}
+
+/**
+ * Whole package of data will be an asset
+ */
+// asset UserDataPackage identified by userId {
+//   o String userId
+//   o String name
+//   o TransferStatus dataPackageStatus
+//   o String dateOfBirth
+//   o String socialSecurityNo
+//   o String memberIdNo
+//   o String emailAddress
+//   o Address mailingAddress
+//   o String telephoneNo
+//   o String bankAccNo
+//   o String clinicalInfo
+//   o String claimsInfo
+// }
+
+
+/**
+ * It stores what user data, a service can access 
+ */
+concept ServiceAccess {
+  o Boolean name
+  o Boolean dateOfBirth
+  o Boolean socialSecurityNo 
+  o Boolean memberIdNo 
+  o Boolean emailAddress 
+  o Boolean mailingAddress 
+  o Boolean telephoneNo 
+  o Boolean bankAccNo 
+  o Boolean clinicalInfo
+  o Boolean claimsInfo 
+}
+
+/**
+ * It stores what service wants permission from user
+ */
+asset UserServicePair identified by userServiceId {
+  o String userServiceId
+  o String userId
+  o String serviceId
+  o String serviceAccessDigiSign
+  o ServiceAccess serviceAccess
+ }
+
+/**
+ * Pair of verificationType & verificationData
+ */
+// concept VerificationTypeDataPair {
+//   o String verificationType
+//   o String verificationData
+// }
+
+// transaction transferAddress {
+//   o Address address
+// }
+
+/**
+ * This transaction stores the user data into registry
+ */
+// transaction userDataPackageTransfer {
+//   --> UserDataPackage userDataPackage
+//   o String details
+// }
+/**
+ * This transaction grants the permission to the service
+ */
+transaction grantAccess {
+  --> UserServicePair userServicePair
+  o String detail
+}
+
+transaction askAccess {
+  --> UserServicePair serviceUserPair
+  o String detail
+}
+
+transaction updateUser {
+  o User updateUser
+  o String detail
+}
+/**
+ * This transaction verifies the user data given by the service
+ */
+// transaction userDataVerification {
+//   --> UserServicePair userServicePair
+//   o VerificationTypeDataPair[] verificationTypeDataPair
+//   o String details
+// }
+
+// transaction permission {
+//   o String details
+// }
