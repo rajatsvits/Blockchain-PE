@@ -1,0 +1,28 @@
+{
+  "name": "blockchain",
+  "version": "1.0.0",
+  "main": "app.js",
+  "dependencies": {
+    "aws-sdk": "^2.224.1",
+    "body-parser": "^1.18.2",
+    "cryptico": "^1.0.2",
+    "debug": "^3.1.0",
+    "eccrypto": "^1.0.3",
+    "express": "^4.16.3",
+    "jQuery": "^1.7.4",
+    "jquery": "^3.3.1",
+    "jsdom": "^11.8.0",
+    "random-number": "0.0.9",
+    "request": "^2.85.0",
+    "require": "^2.4.20",
+    "require.js": "^1.0.0"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node app.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "description": ""
+}
